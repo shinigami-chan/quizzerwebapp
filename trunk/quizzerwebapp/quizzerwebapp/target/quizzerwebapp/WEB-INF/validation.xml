@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE form-validation PUBLIC
+     "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.2.0//EN"
+     "http://jakarta.apache.org/commons/dtds/validator_1_2_0.dtd">
+
+<form-validation>
+
+	<global>
+		<!-- An example global constant <constant> <constant-name>postalCode</constant-name> 
+			<constant-value>^\d{5}\d*$</constant-value> </constant> end example -->
+	</global>
+
+	<formset>
+
+		<!-- login form validation -->
+		<form name="loginDynaForm">
+			<field property="login" depends="required">
+				<arg key="player.login" />
+			</field>
+			<field property="password" depends="required">
+				<arg key="player.password" />
+			</field>
+		</form>
+
+		<!-- registration form validation -->
+		<form name="registrationDynaForm">
+			<field property="player.firstName" depends="required">
+				<arg key="player.firstName" />
+			</field>
+			<field property="player.lastName" depends="required">
+				<arg key="player.lastName" />
+			</field>
+			<field property="birthDateString" depends="required,date">
+				<arg key="player.birthDate" position="0" />
+				<var>
+					<var-name>datePattern</var-name>
+					<var-value>MM/dd/yyyy</var-value>
+				</var>
+			</field>
+			<field property="player.login" depends="required">
+				<arg key="player.login" />
+			</field>
+			<field property="player.password" depends="required,minlength">
+		        <arg key="player.password" position="0"/>
+		        <arg key="${var:minlength}" name="minlength" resource="false" position="1"/>
+		        <var>
+		          <var-name>minlength</var-name>
+		          <var-value>3</var-value>
+		        </var>
+			</field>
+			<field property="confirmPassword" depends="validwhen">
+				<msg key="errors.passwords.mismatch" name="validwhen"/>
+				<var>
+					<var-name>test</var-name>
+					<var-value>(*this* == player.password)</var-value>
+				</var>
+			</field>
+
+			<field property="player.email" depends="required,email">
+				<arg key="player.email" />
+			</field>
+		</form>
+
+		<!-- add category form validation -->
+		<form name="addCategoryDynaForm">
+			<field property="title" depends="required">
+				<arg key="category.title" />
+			</field>
+		</form>
+
+		<!-- add question form validation -->
+		<form name="addQuestionDynaForm">
+			<field property="question" depends="required">
+				<arg key="question.label" />
+			</field>
+			<field property="answer" depends="required">
+				<arg key="question.answer" />
+			</field>
+		</form>
+		
+	</formset>
+	
+	<formset language="en">
+		<!-- registration form validation -->
+		<form name="registrationDynaForm">
+			<field property="player.firstName" depends="required">
+				<arg key="player.firstName" />
+			</field>
+			<field property="player.lastName" depends="required">
+				<arg key="player.lastName" />
+			</field>
+			<field property="birthDateString" depends="required,date">
+				<arg key="player.birthDate" position="0" />
+				<var>
+					<var-name>datePattern</var-name>
+					<var-value>MM/dd/yyyy</var-value>
+				</var>
+			</field>
+			<field property="player.login" depends="required">
+				<arg key="player.login" />
+			</field>
+			<field property="player.password" depends="required,minlength">
+		        <arg key="player.password" position="0"/>
+		        <arg key="${var:minlength}" name="minlength" resource="false" position="1"/>
+		        <var>
+		          <var-name>minlength</var-name>
+		          <var-value>3</var-value>
+		        </var>
+			</field>
+			<field property="confirmPassword" depends="validwhen">
+				<msg key="errors.passwords.mismatch" name="validwhen"/>
+				<var>
+					<var-name>test</var-name>
+					<var-value>(*this* == player.password)</var-value>
+				</var>
+			</field>
+
+			<field property="player.email" depends="required,email">
+				<arg key="player.email" />
+			</field>
+		</form>		
+	</formset>
+
+	<formset language="fr">
+		<!-- registration form validation -->
+		<form name="registrationDynaForm">
+			<field property="player.firstName" depends="required">
+				<arg key="player.firstName" />
+			</field>
+			<field property="player.lastName" depends="required">
+				<arg key="player.lastName" />
+			</field>
+			<field property="birthDateString" depends="required,date">
+				<arg key="player.birthDate" position="0" />
+				<var>
+					<var-name>datePattern</var-name>
+					<var-value>dd/MM/yyyy</var-value>
+				</var>
+			</field>
+			<field property="player.login" depends="required">
+				<arg key="player.login" />
+			</field>
+			<field property="player.password" depends="required,minlength">
+		        <arg key="player.password" position="0"/>
+		        <arg key="${var:minlength}" name="minlength" resource="false" position="1"/>
+		        <var>
+		          <var-name>minlength</var-name>
+		          <var-value>3</var-value>
+		        </var>
+			</field>
+			<field property="confirmPassword" depends="validwhen">
+				<msg key="errors.passwords.mismatch" name="validwhen"/>
+				<var>
+					<var-name>test</var-name>
+					<var-value>(*this* == player.password)</var-value>
+				</var>
+			</field>
+
+			<field property="player.email" depends="required,email">
+				<arg key="player.email" />
+			</field>
+		</form>		
+	</formset>
+
+</form-validation>
