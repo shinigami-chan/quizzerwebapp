@@ -79,51 +79,51 @@
 
 	<action-mappings>
 
-		<action path="/LoginRequired" type="com.tinesoft.quizzer.action.LoginRequiredAction">
+		<action path="/LoginRequired" type="org.springframework.web.struts.DelegatingActionProxy">
 			<forward name="category" path="/form/AddCategoryForm.jsp" />
 			<forward name="question" path="/ListCategories.do" />
 		</action>
 
-		<action path="/Login" type="com.tinesoft.quizzer.action.LoginAction"
+		<action path="/Login" type="org.springframework.web.struts.DelegatingActionProxy"
 			name="loginDynaForm" scope="request" validate="true" input="/form/LoginForm.jsp">
 			<forward name="category" path="/form/AddCategoryForm.jsp" />
 			<forward name="question" path="/ListCategories.do" />
 		</action>
 
-		<action path="/Logout" type="com.tinesoft.quizzer.action.LogoutAction" />
+		<action path="/Logout" type="org.springframework.web.struts.DelegatingActionProxy" />
 
-		<action path="/ChangeLanguage" type="com.tinesoft.quizzer.action.ChangeLanguageAction" />
+		<action path="/ChangeLanguage" type="org.springframework.web.struts.DelegatingActionProxy" />
 
 		<action path="/ChangeVoteCategory"
-			type="com.tinesoft.quizzer.action.ChangeVoteCategoryAction" name="voteCategoryDynaForm">
+			type="org.springframework.web.struts.DelegatingActionProxy" name="voteCategoryDynaForm">
 			<forward name="Category Page" path="/view/CategoryView.jsp" />
 		</action>
 
-		<action path="/Register" type="com.tinesoft.quizzer.action.RegistrationAction"
+		<action path="/Register" type="org.springframework.web.struts.DelegatingActionProxy"
 			name="registrationDynaForm" scope="request" validate="true"
 			input="/form/RegistrationForm.jsp" />
 
-		<action path="/Add*" type="com.tinesoft.quizzer.action.Add{1}Action"
+		<action path="/Add*" type="org.springframework.web.struts.DelegatingActionProxy"
 			name="add{1}DynaForm" scope="request" validate="true" input="/form/Add{1}.jsp" />
 
 
-		<action path="/ListCategories" type="com.tinesoft.quizzer.action.ListCategoriesAction">
+		<action path="/ListCategories" type="org.springframework.web.struts.DelegatingActionProxy">
 			<forward name="Categories Page" path="/form/AddQuestionForm.jsp" />
 		</action>
 
-		<action path="/ViewCategory" type="com.tinesoft.quizzer.action.ViewCategoryAction">
+		<action path="/ViewCategory" type="org.springframework.web.struts.DelegatingActionProxy">
 			<forward name="Category Page" path="/view/CategoryView.jsp" />
 		</action>
 
-		<action path="/ViewCategories" type="com.tinesoft.quizzer.action.ListCategoriesAction">
+		<action path="/ViewCategories" type="org.springframework.web.struts.DelegatingActionProxy">
 			<forward name="Categories Page" path="/view/CategoriesView.jsp" />
 		</action>
 
-		<action path="/PlayCategory" type="com.tinesoft.quizzer.action.PlayCategoryAction">
+		<action path="/PlayCategory" type="org.springframework.web.struts.DelegatingActionProxy">
 			<forward name="Category Page" path="/view/PlayView.jsp" />
 		</action>
 
-		<action path="/Play" type="com.tinesoft.quizzer.action.PlayAction"
+		<action path="/Play" type="org.springframework.web.struts.DelegatingActionProxy"
 			name="playDynaForm" scope="request">
 			<forward name="GameOver Page" path="/view/GameOverView.jsp" />
 		</action>
@@ -141,6 +141,10 @@
 		property="definitions-config" value="/WEB-INF/tiles-defs.xml" /> <set-property 
 		property="moduleAware" value="true" /> </plug-in> -->
 
+	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation" value="/WEB-INF/beans.xml" />
+	</plug-in>
+	
 	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
 		<set-property property="pathnames"
 			value="/WEB-INF/validator-rules.xml, 
