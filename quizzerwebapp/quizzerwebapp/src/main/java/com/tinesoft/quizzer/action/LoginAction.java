@@ -14,7 +14,6 @@ import org.apache.struts.action.ActionMessage;
 import org.apache.struts.validator.DynaValidatorForm;
 
 import com.tinesoft.quizzer.model.dao.PlayerDAO;
-import com.tinesoft.quizzer.model.dao.hibernate.PlayerDAOHib;
 import com.tinesoft.quizzer.model.domain.Player;
 import com.tinesoft.quizzer.util.Utils;
 
@@ -25,7 +24,7 @@ import com.tinesoft.quizzer.util.Utils;
  * 
  */
 public class LoginAction extends Action {
-	private PlayerDAO playerDAO = new PlayerDAOHib();
+	private PlayerDAO playerDAO = null;
 
 	public PlayerDAO getPlayerDAO() {
 		return playerDAO;

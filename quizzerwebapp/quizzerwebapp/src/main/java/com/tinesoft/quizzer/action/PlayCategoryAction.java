@@ -13,7 +13,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.tinesoft.quizzer.model.dao.CategoryDAO;
-import com.tinesoft.quizzer.model.dao.hibernate.CategoryDAOHib;
+
 import com.tinesoft.quizzer.model.domain.Category;
 import com.tinesoft.quizzer.model.domain.Question;
 
@@ -26,8 +26,8 @@ import com.tinesoft.quizzer.model.domain.Question;
  * 
  */
 public class PlayCategoryAction extends Action {
-	private CategoryDAO categoryDAO = new CategoryDAOHib();
-	private int nbQuestionsByCategory = 15;
+	private CategoryDAO categoryDAO = null;
+	private int nbQuestionsByCategory;
 
 	public CategoryDAO getCategoryDAO() {
 		return categoryDAO;

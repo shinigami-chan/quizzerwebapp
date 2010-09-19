@@ -16,9 +16,6 @@ import org.apache.struts.action.DynaActionForm;
 import com.tinesoft.quizzer.model.dao.CategoryDAO;
 import com.tinesoft.quizzer.model.dao.GameResultDAO;
 import com.tinesoft.quizzer.model.dao.PlayerDAO;
-import com.tinesoft.quizzer.model.dao.hibernate.CategoryDAOHib;
-import com.tinesoft.quizzer.model.dao.hibernate.GameResultDAOHib;
-import com.tinesoft.quizzer.model.dao.hibernate.PlayerDAOHib;
 import com.tinesoft.quizzer.model.domain.Category;
 import com.tinesoft.quizzer.model.domain.GameResult;
 import com.tinesoft.quizzer.model.domain.Player;
@@ -33,9 +30,9 @@ import com.tinesoft.quizzer.util.Utils;
  * 
  */
 public class PlayAction extends Action {
-	private CategoryDAO categoryDAO = new CategoryDAOHib();
-	private GameResultDAO gameResultDAO = new GameResultDAOHib();
-	private PlayerDAO playerDAO = new PlayerDAOHib();
+	private CategoryDAO categoryDAO = null;
+	private GameResultDAO gameResultDAO = null;
+	private PlayerDAO playerDAO = null;
 
 	public CategoryDAO getCategoryDAO() {
 		return categoryDAO;
