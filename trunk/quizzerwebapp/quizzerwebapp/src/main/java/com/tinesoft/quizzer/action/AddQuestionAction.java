@@ -14,9 +14,6 @@ import org.apache.struts.validator.DynaValidatorForm;
 import com.tinesoft.quizzer.model.dao.CategoryDAO;
 import com.tinesoft.quizzer.model.dao.QuestionDAO;
 import com.tinesoft.quizzer.model.dao.QuestionUpdateDAO;
-import com.tinesoft.quizzer.model.dao.hibernate.CategoryDAOHib;
-import com.tinesoft.quizzer.model.dao.hibernate.QuestionDAOHib;
-import com.tinesoft.quizzer.model.dao.hibernate.QuestionUpdateDAOHib;
 import com.tinesoft.quizzer.model.domain.Category;
 import com.tinesoft.quizzer.model.domain.Question;
 import com.tinesoft.quizzer.model.domain.QuestionUpdate;
@@ -29,9 +26,9 @@ import com.tinesoft.quizzer.model.domain.Player;
  * 
  */
 public class AddQuestionAction extends Action {
-	private QuestionDAO questionDAO = new QuestionDAOHib();
-	private QuestionUpdateDAO questionUpdateDAO = new QuestionUpdateDAOHib();
-	private CategoryDAO categoryDAO = new CategoryDAOHib();
+	private QuestionDAO questionDAO = null;
+	private QuestionUpdateDAO questionUpdateDAO = null;
+	private CategoryDAO categoryDAO = null;
 
 	public QuestionDAO getQuestionDAO() {
 		return questionDAO;

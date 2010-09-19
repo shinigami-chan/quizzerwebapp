@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="playerDAOHib" class="com.tinesoft.quizzer.model.dao.hibernate.PlayerDAOHib"
+		scope="singleton" />
+	<bean id="categoryDAOHib" class="com.tinesoft.quizzer.model.dao.hibernate.CategoryDAOHib"
+		scope="singleton" />
+	<bean id="categoryUpdateDAOHib" class="com.tinesoft.quizzer.model.dao.hibernate.CategoryUpdateDAOHib"
+		scope="singleton" />
+	<bean id="categoryVoteDAOHib" class="com.tinesoft.quizzer.model.dao.hibernate.CategoryVoteDAOHib"
+		scope="singleton" />
+	<bean id="questionDAOHib" class="com.tinesoft.quizzer.model.dao.hibernate.QuestionDAOHib"
+		scope="singleton" />
+	<bean id="questionUpdateDAOHib" class="com.tinesoft.quizzer.model.dao.hibernate.QuestionUpdateDAOHib"
+		scope="singleton" />
+	<bean id="questionVoteDAOHib" class="com.tinesoft.quizzer.model.dao.hibernate.QuestionVoteDAOHib"
+		scope="singleton" />
+	<bean id="gameResultDAOHib" class="com.tinesoft.quizzer.model.dao.hibernate.GameResultDAOHib"
+		scope="singleton" />
+
+
+	<bean name="/LoginRequired" class="com.tinesoft.quizzer.action.LoginRequiredAction" />
+
+	<bean name="/Login" class="com.tinesoft.quizzer.action.LoginAction">
+		<property name="playerDAO" ref="playerDAOHib" />
+	</bean>
+
+	<bean name="/Logout" class="com.tinesoft.quizzer.action.LogoutAction" />
+
+	<bean name="/ChangeLanguage" class="com.tinesoft.quizzer.action.ChangeLanguageAction" />
+
+	<bean name="/ChangeVoteCategory" class="com.tinesoft.quizzer.action.ChangeVoteCategoryAction">
+		<property name="playerDAO" ref="playerDAOHib" />
+		<property name="categoryDAO" ref="categoryDAOHib" />
+		<property name="categoryVoteDAO" ref="categoryVoteDAOHib" />
+	</bean>
+
+	<bean name="/Register" class="com.tinesoft.quizzer.action.RegistrationAction">
+		<property name="playerDAO" ref="playerDAOHib" />
+	</bean>
+
+	<bean name="/AddQuestion" class="com.tinesoft.quizzer.action.AddQuestionAction">
+		<property name="questionDAO" ref="questionDAOHib" />
+		<property name="questionUpdateDAO" ref="questionUpdateDAOHib" />
+		<property name="categoryDAO" ref="categoryDAOHib" />
+	</bean>
+
+	<bean name="/AddCategory" class="com.tinesoft.quizzer.action.AddCategoryAction">
+		<property name="categoryDAO" ref="categoryDAOHib" />
+		<property name="categoryUpdateDAO" ref="categoryUpdateDAOHib" />
+	</bean>
+
+	<bean name="/ListCategories" class="com.tinesoft.quizzer.action.ListCategoriesAction">
+		<property name="categoryDAO" ref="categoryDAOHib" />
+	</bean>
+
+	<bean name="/ViewCategory" class="com.tinesoft.quizzer.action.ViewCategoryAction">
+		<property name="categoryDAO" ref="categoryDAOHib" />
+	</bean>
+
+	<bean name="/ViewCategories" class="com.tinesoft.quizzer.action.ListCategoriesAction">
+		<property name="categoryDAO" ref="categoryDAOHib" />
+	</bean>
+
+	<bean name="/PlayCategory" class="com.tinesoft.quizzer.action.PlayCategoryAction">
+		<property name="categoryDAO" ref="categoryDAOHib" />
+		<property name="nbQuestionsByCategory" value="15" />
+	</bean>
+
+	<bean name="/Play" class="com.tinesoft.quizzer.action.PlayAction">
+		<property name="categoryDAO" ref="categoryDAOHib" />
+		<property name="playerDAO" ref="playerDAOHib" />
+		<property name="gameResultDAO" ref="gameResultDAOHib" />
+	</bean>
+
+</beans>

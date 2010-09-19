@@ -13,8 +13,6 @@ import org.apache.struts.validator.DynaValidatorForm;
 
 import com.tinesoft.quizzer.model.dao.CategoryDAO;
 import com.tinesoft.quizzer.model.dao.CategoryUpdateDAO;
-import com.tinesoft.quizzer.model.dao.hibernate.CategoryDAOHib;
-import com.tinesoft.quizzer.model.dao.hibernate.CategoryUpdateDAOHib;
 import com.tinesoft.quizzer.model.domain.Category;
 import com.tinesoft.quizzer.model.domain.CategoryUpdate;
 import com.tinesoft.quizzer.model.domain.Player;
@@ -26,8 +24,8 @@ import com.tinesoft.quizzer.model.domain.Player;
  * 
  */
 public class AddCategoryAction extends Action {
-	private CategoryDAO categoryDAO = new CategoryDAOHib();
-	private CategoryUpdateDAO categoryUpdateDAO = new CategoryUpdateDAOHib();
+	private CategoryDAO categoryDAO = null;
+	private CategoryUpdateDAO categoryUpdateDAO = null;
 
 	public CategoryDAO getCategoryDAO() {
 		return categoryDAO;
